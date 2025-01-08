@@ -27,7 +27,7 @@ The shell supports:
 - Standard output (`stdout`) redirection.
 - Standard error (`stderr`) redirection.
 - Quoting to handle spaces and special characters.
-- Redirection operators:  >, 2>, >>, 2>>
+- Redirection operators:  `>, 2>, >>, 2>>`
 
 ---
 
