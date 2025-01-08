@@ -126,8 +126,7 @@ pub fn run_program(env_var: &str, command: &str, args:&[String]) -> bool {
                                 .expect("Failed to execute program");
 
                             let stdout = String::from_utf8_lossy(&output.stdout);
-                            let custom_stdout = stdout.replace("///", "");
-                            print!("{}", custom_stdout);
+                            print!("{}", stdout);
                             let stderr = std::str::from_utf8(&output.stderr).expect("Invalid UTF-8 in stderr");
                             print!("{}", stderr); 
                         }
