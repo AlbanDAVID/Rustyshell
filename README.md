@@ -31,6 +31,3 @@ The shell supports:
 
 ---
 
-## How to Use
-
-./target/release/Rustyshell
