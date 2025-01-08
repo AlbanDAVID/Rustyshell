@@ -1,6 +1,7 @@
 use std::env;
 use std::fs;
 
+// retrieves the contents of an environment variable
 pub fn get_env_var(env_var: &str) -> String {
 
     match env::var(env_var) {
@@ -9,7 +10,7 @@ pub fn get_env_var(env_var: &str) -> String {
     } 
 }
 
-
+// Browse directories and get path (if input is an available program/script in PATH)
 pub fn find_path(env_var: &str, input: &str) -> Option<String> {
 
     // retrieve PATH env variable 

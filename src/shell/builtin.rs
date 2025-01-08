@@ -5,7 +5,7 @@ use std::env::set_current_dir;
 use crate::get_env_var;
 use std::io::Write;
 
-// echo redirection
+// ECHO redirection
 pub fn redirection(command: &str, args:&[String]) {
 
     let mut redirected = false;

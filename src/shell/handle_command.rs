@@ -5,6 +5,7 @@ use crate::builtin::change_dir;
 use crate::find_path;
 use crate::shell::runner::run_program;
 
+// handle command
 pub fn handle_command(input: &str) -> bool {
 
     // separate command and args (if any).

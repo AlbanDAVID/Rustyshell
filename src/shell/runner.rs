@@ -5,6 +5,7 @@ use std::process::Command;
 use std::fs::OpenOptions;
 use std::io::Write;
 
+// run a program/script include in PATH
 pub fn run_program(env_var: &str, command: &str, args:&[String]) -> bool {
 
     // retrieve PATH env variable 
