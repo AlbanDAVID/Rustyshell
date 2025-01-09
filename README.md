@@ -20,14 +20,13 @@ The following built-in commands are implemented:
 - **`type`**: Display information about command types.
 
 ### 2. Program Execution
-Rustyshell can execute external programs or scripts present in the system's `PATH`.
+Rustyshell can execute external programs or scripts present in the system's `PATH` and print their `stdout`/`stderr`.
 
 ### 3. Redirection and Quoting
 The shell supports:
-- Standard output (`stdout`) redirection.
-- Standard error (`stderr`) redirection.
-- Quoting to handle spaces and special characters.
+
 - Redirection operators:  `>, 2>, >>, 2>>`
+- Quoting to handle spaces and special characters.
 
 ---
 
