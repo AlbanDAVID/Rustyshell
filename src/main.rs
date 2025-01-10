@@ -1,16 +1,10 @@
 #[allow(unused_imports)]
 use std::io::{self, Write};
-
 mod utils;
-use crate::utils::file;
-use crate::file::get_env_var;
-use crate::file::find_path;
-
+use crate::utils::file::{*};
 mod shell;
-use crate::shell::handle_command;
-use crate::handle_command::handle_command;
-use crate::shell::builtin;
-
+use crate::shell::{*};
+use crate::handle_command::{*};
 
 fn main() {
 
