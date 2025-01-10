@@ -96,6 +96,10 @@ pub fn change_dir(input: &str) -> Result<(), Box<dyn std::error::Error>>  {
 
     //this std function handle absolute and relative path
     //`let _ = ...` to ignore the resulting value
+    // `?` is the propagation error. If the dir is wrong during cd,
+    // std error of std function `set_current_dir` will appear. 
+    // it's also possible to custom the message error (see, in handle_command when `change_dir` is
+    // called)
     if input == "~" {
         let _ = set_current_dir(get_env_var("HOME"))?; 
     } else {
