@@ -17,4 +17,4 @@ jobs:
     steps:
     - uses: actions/checkout@v4
     - name: Build Docker Image and run test in docker 
-      run: sudo docker-compose up --build
+      run: docker-compose up --build
