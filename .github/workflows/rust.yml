@@ -2,9 +2,9 @@ name: Rust
 
 on:
   push:
-    branches: [ "main" ]
+    branches: [ "try_integration" ]
   pull_request:
-    branches: [ "main" ]
+    branches: [ "try_integration" ]
 
 env:
   CARGO_TERM_COLOR: always
@@ -16,7 +16,5 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
-    - name: Build
-      run: cargo build --verbose
-    - name: Run tests
-      run: cargo test -- --nocapture
+    - name: Build Docker Image and run test in docker 
+      run: sudo docker-compose up --build
