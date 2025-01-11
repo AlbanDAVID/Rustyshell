@@ -33,4 +33,4 @@ jobs:
       - name: 🛠️ Build Docker Image and Run Tests
         run: |
           export RUST_BACKTRACE=1
-          docker-compose run --rm rust-shell cargo test --verbose || exit 1
+          docker-compose run --rm rust-shell cargo test -- --nocapture
