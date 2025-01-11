@@ -19,9 +19,7 @@ fn test_ls_redirection_to_file() {
 
     // simule command line  
     let stdin = child.stdin.as_mut().expect("Échec d'accès à stdin");
-    writeln!(stdin, "ls").expect("Échec de l'écriture dans stdin");
-    writeln!(stdin, "pwd").expect("Échec de l'écriture dans stdin");
-
+    writeln!(stdin, "echo test").expect("Échec de l'écriture dans stdin");
 
 
     // wait run end and print
@@ -29,5 +27,7 @@ fn test_ls_redirection_to_file() {
     let stdout = String::from_utf8_lossy(&output.stdout);
 
     println!("{}", stdout);
+
+    assert_eq!(stdout, "🇷 tes\n🇷 ");
 }
 
