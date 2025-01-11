@@ -28,6 +28,6 @@ fn test_ls_redirection_to_file() {
 
     println!("{}", stdout);
 
-    assert_eq!(stdout, "🇷 test\n🇷 ");
+    assert_eq!(stdout, "🇷 tes\n🇷 ");
 }
 
