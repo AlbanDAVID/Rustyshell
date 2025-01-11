@@ -30,7 +30,10 @@ jobs:
           docker-compose --version
         continue-on-error: false
 
-      - name: 🛠️ Build Docker Image and Run Tests
-        run: docker-compose up --build || docker-compose logs
+      - name: Build and run with Docker Compose
+        run: |
+          set -e  # Stop the job on any error
+          docker-compose up --build || (docker-compose logs && exit 1)  # Capture logs before failing
+
 
 
