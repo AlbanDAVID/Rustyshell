@@ -16,5 +16,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
+    - name:  Install Docker Compose
+    run: |
+           sudo apt-get install -y docker-compose
     - name: Build Docker Image and run test in docker 
       run: docker-compose up --build
