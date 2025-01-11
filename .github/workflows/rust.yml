@@ -31,6 +31,6 @@ jobs:
         continue-on-error: false
 
       - name: 🛠️ Build Docker Image and Run Tests
-        run: docker-compose run --rm rustyshell cargo test -- --nocapture 2>&1
+        run: docker-compose run --rm rustyshell
 
 
