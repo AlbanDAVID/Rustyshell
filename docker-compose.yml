@@ -1,0 +1,10 @@
+version: "3.8"
+
+services:
+  rust-shell:
+    build: .
+    volumes:
+      - .:/app
+    environment:
+      - CARGO_HOME=/root/.cargo
+    command: ["cargo", "test", "--", "--nocapture"]  
