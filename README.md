@@ -1,3 +1,4 @@
+[![Rustyshell](https://github.com/AlbanDAVID/Rustyshell/actions/workflows/rust.yml/badge.svg)](https://github.com/AlbanDAVID/Rustyshell/actions/workflows/rust.yml)
 # Rustyshell
 
 Rustyshell is a project for learning Rust by implementing a (very) basic shell.  
