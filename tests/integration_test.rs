@@ -1,33 +1,49 @@
 use std::process::{Command, Stdio};
 use std::fs;
 use std::io::{Write};
+use std::process::Output;
+use std::process::Child;
 
-#[test]
-fn test_ls_redirection_to_file() {
-    let file_name = "test_output.txt";
-    if fs::metadata(file_name).is_ok() {
-        fs::remove_file(file_name).expect("Échec de la suppression du fichier de test existant");
-    }
-
-    // run interactive shell
-    let mut child = Command::new("./target/debug/Rustyshell") 
+// interactive shell function for testing
+fn interactive_shell(bin_path: &str, cmds: Vec<&str>) -> Result<Child, std::io::Error> {
+    let mut child = Command::new(bin_path) 
         .stdin(Stdio::piped()) 
         .stdout(Stdio::piped())
         .stderr(Stdio::piped())
         .spawn() 
-        .expect("Échec du démarrage du shell interactif");
+        .expect("Failed to start interactive shell");
 
-    // simule command line  
-    let stdin = child.stdin.as_mut().expect("Échec d'accès à stdin");
-    writeln!(stdin, "echo test").expect("Échec de l'écriture dans stdin");
+    // command line  
+    let stdin = child.stdin.as_mut().expect("Failed to access stdin");
+    for cmd in cmds {
+    writeln!(stdin, "{}", cmd).expect("Failed to write to stdin");
+    } 
 
-
-    // wait run end and print
-    let output = child.wait_with_output().expect("Échec de l'attente de la fin du programme");
-    let stdout = String::from_utf8_lossy(&output.stdout);
-
-    println!("{}", stdout);
-
-    assert_eq!(stdout, "🇷 tes\n🇷 ");
+    Ok(child)
 }
 
+#[test]
+fn test_command() {
+
+    let cmds: Vec<&str> = vec!["echo blue", "pwd"];
+    if let Ok(child) =  interactive_shell("./target/debug/Rustyshell", cmds) {
+    // wait end run end and print
+    let output = child.wait_with_output().expect("Failed to wait for program to complete");
+    let stdout = String::from_utf8_lossy(&output.stdout);
+    println!("{}", stdout);
+    assert_eq!(stdout, "🇷 blue\n🇷 /app\n🇷 ");
+    }
+}
+
+#[test]
+fn test_redirection() {
+
+    let cmds: Vec<&str> = vec!["echo blue > test", "ls >> test"];
+    if let Ok(child) =  interactive_shell("./target/debug/Rustyshell", cmds) {
+    // wait end run end and print
+    let output = child.wait_with_output().expect("Failed to wait for program to complete");
+    let stdout = String::from_utf8_lossy(&output.stdout);
+    println!("{}", stdout);
+    assert!(fs::read_to_string("test").expect("REASON").contains("blue"));
+    }
+}
