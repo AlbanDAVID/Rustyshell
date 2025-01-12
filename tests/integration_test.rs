@@ -1,8 +1,12 @@
 use std::process::{Command, Stdio};
 use std::fs;
 use std::io::{Write};
-use std::process::Output;
 use std::process::Child;
+
+
+////////////////////////////////////////////////////////////////////////////////
+// to run integration test in local : sudo docker-compose run --rm rustyshell //
+////////////////////////////////////////////////////////////////////////////////
 
 // interactive shell function for testing
 fn interactive_shell(bin_path: &str, cmds: Vec<&str>) -> Result<Child, std::io::Error> {
