@@ -38,12 +38,14 @@ fn test_command() {
 #[test]
 fn test_redirection() {
 
-    let cmds: Vec<&str> = vec!["echo blue > test", "ls >> test"];
+    let cmds: Vec<&str> = vec!["echo green > test", "ls >> test", "cat test"];
     if let Ok(child) =  interactive_shell("./target/debug/Rustyshell", cmds) {
     // wait end run end and print
     let output = child.wait_with_output().expect("Failed to wait for program to complete");
     let stdout = String::from_utf8_lossy(&output.stdout);
     println!("{}", stdout);
-    assert!(fs::read_to_string("test").expect("REASON").contains("red"));
+    assert!(fs::read_to_string("test").expect("REASON").contains("green"));
+    // remove test file
+    let _ = fs::remove_file("test");
     }
 }
