@@ -2,9 +2,9 @@ name: Rustyshell
 
 on:
   push:
-    branches: [ "try_integration" ]
+    branches: [ "main", "try_integration" ]
   pull_request:
-    branches: [ "try_integration" ]
+    branches: [ "main" ]
 
 env:
   CARGO_TERM_COLOR: always
