@@ -30,10 +30,7 @@ jobs:
           docker-compose --version
         continue-on-error: false
 
-      - name: Build and run with Docker Compose
-        run: |
-          set -e  # Stop the job on any error
-          docker-compose up --rm rustyshell || docker-compose logs
-
+      - name: 🛠️ Build Docker Image and Run Tests
+        run: docker-compose --rm rustyshell || docker-compose logs
 
 
