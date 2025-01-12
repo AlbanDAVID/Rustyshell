@@ -44,6 +44,6 @@ fn test_redirection() {
     let output = child.wait_with_output().expect("Failed to wait for program to complete");
     let stdout = String::from_utf8_lossy(&output.stdout);
     println!("{}", stdout);
-    assert!(fs::read_to_string("test").expect("REASON").contains("blue"));
+    assert!(fs::read_to_string("test").expect("REASON").contains("red"));
     }
 }
