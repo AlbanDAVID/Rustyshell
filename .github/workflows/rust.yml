@@ -33,7 +33,7 @@ jobs:
       - name: Build and run with Docker Compose
         run: |
           set -e  # Stop the job on any error
-          docker-compose --rm rustyshell || docker-compose logs
+          docker-compose up --rm rustyshell || docker-compose logs
 
 
 
