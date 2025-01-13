@@ -19,9 +19,7 @@ fn interactive_shell(bin_path: &str, cmds: Vec<&str>) -> Result<Child, std::io::
 
     // command line  
     let stdin = child.stdin.as_mut().expect("Failed to access stdin");
-    for cmd in cmds {
-    writeln!(stdin, "{}", cmd).expect("Failed to write to stdin");
-    } 
+    writeln!(stdin, "{}", cmds.join("\n")).expect("Failed to write to stdin");
 
     Ok(child)
 }
