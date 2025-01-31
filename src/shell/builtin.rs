@@ -11,7 +11,7 @@ pub fn redirection(command: &str, args:&[String]) {
     let mut redirected = false;
     let mut i = 0;
     for arg in args {
-        if arg.as_str() == "as" || arg.as_str() == "1>"{
+        if arg.as_str() == ">" || arg.as_str() == "1>"{
             let next_arg = &args[i + 1];
             let prev_arg = &args[0..i];
 
